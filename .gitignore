@@ -36,3 +36,4 @@ out/
 # Ignore generated files by build tools
 Makefile.bak
 Makefile.old
+Makefile.file
