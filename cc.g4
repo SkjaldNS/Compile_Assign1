@@ -4,7 +4,7 @@ start   : 'hardware:' h = hardwaredecl
           'inputs:' i = inputs
           'outputs:' o = outputs
           'latches:' l = latches
-          'def:'* d = def
+          ('def:' d = def)*
           'updates:' u = updates
           'siminputs:' s = siminputs
           EOF ;
@@ -14,17 +14,17 @@ exp : IDENT
     | exp '*' exp
     | exp exp
     | exp '+' exp
-    | IDENT '(' exps ')'
+    | IDENT '(' args ')'
     | '(' exp ')'
     ;
 
 
-exps: exp (',' exp)*;
+args: IDENT (',' IDENT)*;
 hardwaredecl : IDENT;
 inputs: (IDENT)+;
 outputs: (IDENT)+;
 latches: (IDENT)+;
-def: (IDENT '(' exps ')' '=' exp)*;
+def: (IDENT '(' args ')' '=' exp)*;
 updates : (IDENT '=' exp)+;
 siminputs : (IDENT '=' BOOLEANS)+;
 
