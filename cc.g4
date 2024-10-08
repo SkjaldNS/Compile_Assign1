@@ -4,7 +4,7 @@ start   : 'hardware:' h = hardwaredecl
           'inputs:' i = inputs
           'outputs:' o = outputs
           'latches:' l = latches
-          'def:'* d = def
+          ('def:' d = def)*
           'updates:' u = updates
           'siminputs:' s = siminputs
           EOF ;
