@@ -1,10 +1,16 @@
 antlrjar = antlr-4.13.2-complete.jar
 
 ###### FOR LINUX AND MAC -- uncomment the following line if you do not use Windows:
-# classpath = '$(antlrjar):.'
+#classpath = '$(antlrjar):.'
 
 ###### FOR WINDOWS -- comment the following line if you do not use Windows:
-classpath = '$(antlrjar);.'
+#classpath = '$(antlrjar);.'
+
+ifeq ($(OS),Windows_NT)
+    classpath = '$(antlrjar);.'
+else
+    classpath = '$(antlrjar):.'
+endif
 
 antlr4 = java -cp $(classpath) org.antlr.v4.Tool
 grun = java -cp $(classpath) org.antlr.v4.gui.TestRig
