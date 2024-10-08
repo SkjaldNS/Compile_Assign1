@@ -9,24 +9,24 @@ start   : 'hardware:' h = hardwaredecl
           'siminputs:' s = siminputs
           EOF ;
 
-exp : IDENT
-    | '/' exp
-    | exp '*' exp
-    | exp exp
-    | exp '+' exp
-    | IDENT '(' args ')'
-    | '(' exp ')'
+exp : IDENT                              #Signal
+    | op='/' e=exp                       #Not
+    | e1=exp op='*'? e2=exp              #Conjunction
+    | e1=exp op='+' e2=exp½              #Disjunction
+    | i=IDENT p1='(' exp=exps p2=')'     #Function call
+    | p1='(' e=exp p2=')'                #Expression
     ;
 
 
-args: IDENT (',' IDENT)*;
-hardwaredecl : IDENT;
-inputs: (IDENT)+;
-outputs: (IDENT)+;
-latches: (IDENT)+;
-def: (IDENT '(' args ')' '=' exp)*;
-updates : (IDENT '=' exp)+;
-siminputs : (IDENT '=' BOOLEANS)+;
+exps: exp (',' exp)*                     #Exps
+args: IDENT (',' IDENT)*;                #Args
+hardwaredecl : IDENT;                    #Hardware
+inputs: (IDENT)+;                        #Inputs
+outputs: (IDENT)+;                       #Outputs
+latches: (IDENT)+;                       #Latches
+def: (IDENT '(' args ')' '=' exp)*;      #Def
+updates : (IDENT '=' exp)+;              #Updates
+siminputs : (IDENT '=' BOOLEANS)+;       #Siminputs
 
 BOOLEANS: [01]+;
 
