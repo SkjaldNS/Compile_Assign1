@@ -51,14 +51,14 @@ class Interpreter extends AbstractParseTreeVisitor<Double>
     // implement "implVisitor" at the moment.
 
 
-	public Double visitStart(progParser.StartContext ctx){
+	public Double visitStart(ccParser.StartContext ctx){
 	    return visit(ctx.e);
 	}
-	public Double visitVariable(progParser.VariableContext ctx){
+	public Double visitVariable(ccParser.VariableContext ctx){
 	    System.err.println("Variables are not yet supported.\n");
 	    System.exit(-1);
 	    return null; }
-	public Double visitAddSub(progParser.AddSubContext ctx){
+	public Double visitAddSub(ccParser.AddSubContext ctx){
 	    // e1=exp op=('+'|'-') e2=exp
 	    System.out.println("Addition/Subtraction");
 	    Double d1=visit(ctx.e1);
@@ -72,13 +72,13 @@ class Interpreter extends AbstractParseTreeVisitor<Double>
 		return d1-d2;
 	    }
 	}
-	public Double visitConstant(progParser.ConstantContext ctx){
+	public Double visitConstant(ccParser.ConstantContext ctx){
 	    String s=ctx.f.getText();
 	    System.out.println("Constant "+s);
 	    return Double.valueOf(s);
 	}
-	public Double visitParen(progParser.ParenContext ctx){ return visit(ctx.e); }
-	public Double visitMultDiv(progParser.MultDivContext ctx){
+	public Double visitParen(ccParser.ParenContext ctx){ return visit(ctx.e); }
+	public Double visitMultDiv(ccParser.MultDivContext ctx){
 	    System.out.println("Mult/Div");
 	    Double d1=visit(ctx.e1);
 	    Double d2=visit(ctx.e2);
