@@ -1,0 +1,38 @@
+# Compiled object files
+*.o
+
+# Compiled binary files
+*.exe
+*.out
+*.a
+*.so
+
+# Dependency files
+*.d
+
+# Build directories
+build/
+bin/
+out/
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+
+# IDE specific files
+*.swp
+*.swo
+*.DS_Store
+*.idea/
+*.vscode/
+*.project
+*.cproject
+
+# Other common files
+*.class
+*.jar
+
+# Ignore generated files by build tools
+Makefile.bak
+Makefile.old
