@@ -15,7 +15,7 @@ exp : x=IDENT                            #Signal
     | op='/' e=exp                       #Not
     | e1=exp op='*'? e2=exp              #Conjunction
     | e1=exp op='+' e2=exp               #Disjunction
-    | i=IDENT p1='(' ex=exps p2=')'      #Function_call
+    | i=IDENT p1='(' ex=EXPS p2=')'      #Function_call
     | p1='(' e=exp p2=')'                #Expression
     ;
 
