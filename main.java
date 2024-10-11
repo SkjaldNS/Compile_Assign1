@@ -94,17 +94,17 @@ class Interpreter extends AbstractParseTreeVisitor<String>
         	for(ccParser.InputsContext i : ctx.IDENT()) {
             		inputs.add(i.getText());
         	}
-        	return "<H2>"+ String.join("," inputs)+"</H2>"
+        	return "\n<H2>"+ String.join("," inputs)+"</H2>"
 
 	String visitOutputs(ccParser.OutputsContext ctx) {
 			List<String> outputs = new ArrayList<String>();
 			for(ccParser.OutputsContext i : ctx.IDENT()) {
 				outputs.add(i.getText());
 			}
-			return "<H2>"+ String.join("," outputs)+"</H2>"
+			return "<\nH2>"+ String.join("," outputs)+"</H2>"
 
 	String visitLatches(ccParser.LatchesContext ctx) {
-		return "<H2>"+ctx.getText()+"</H2>"
+		return "<\nH2>"+ctx.getText()+"</H2>"
 	}
 
 	String visitDef(ccParser.DefContext ctx) {
