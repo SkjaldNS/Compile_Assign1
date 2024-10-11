@@ -128,7 +128,7 @@ class Interpreter extends AbstractParseTreeVisitor<AST>
 	}
 
 	public AST visitArgs(ccParser.ArgsContext ctx) {
-		return new Args(ctx.eval());
+		return new Args(ctx.getText());
 	}
 
 
