@@ -42,7 +42,7 @@ class Hardware extends Line {
 
     @Override
     public String eval() {
-        return "<H1>" + s.eval() + "</H1>";
+        return "<H1>" + s.eval() + "</H1>\n";
     }
 }
 
@@ -55,7 +55,7 @@ class Input extends Line {
     }
     @Override
     public String eval() {
-        return "<H2>" + s.eval() + "</H2>";
+        return "<H2> Inputs </H2>\n"+s.eval()+"\n";
     }
 
 }
@@ -70,7 +70,7 @@ class Output extends Line {
 
     @Override
     public String eval() {
-        return "<H2>" + s.eval() + "</H2>";
+        return "<H2> Outputs </H2>\n"+ s.eval()+"\n";
     }
 
 }
@@ -85,7 +85,7 @@ class Latch extends Line {
 
     @Override
     public String eval() {
-        return "<H2>" + s.eval() + "</H2>";
+        return "<H2> Latches </H2>\n"+ s.eval()+"\n";
     }
 
 }
@@ -104,7 +104,7 @@ class Def extends Line {
 
     @Override
     public String eval() {
-	return "<H2>" + s.eval() + a.eval()+ e.eval() + "</H2>";
+	return "<H2> Def </H2>\n\(\mathit{"+ s.eval() + "} ("+ a.eval() + ")=(" e.eval()+")\)<br>";
     }
 
 
@@ -122,7 +122,7 @@ class Update extends Line {
 
     @Override
     public String eval() {
-        return "<H2>" + s.eval()+e.eval() + "</H2>";
+        return "<H2> Updates </H2>\n"+ s.eval()+"&larr;\(\mathit{"+e.eval()+"\n";
     }
 
 
@@ -140,7 +140,7 @@ class SimInput extends Line {
 
     @Override
     public String eval() {
-	    return "<H2>" + s.eval() + b + "</H2>";
+	    return "<H2> Simulation Inputs </H2>\n"+ s.eval() + b + "\n";
     }
 
 }
@@ -159,7 +159,7 @@ class Signal extends Exp {
 
     @Override
     public String eval() {
-        return name;
+        return "\mathrm{" + name + "}";
     }
 
 
@@ -174,7 +174,7 @@ class Not extends Exp {
 
     @Override
     public String eval() {
-        return e.eval();
+        return "(\neg(" + e.eval() + ")";
     }
 }
 
@@ -190,7 +190,7 @@ class Conjunction extends Exp {
 
     @Override
     public String eval() {
-        return e1.eval()+e2.eval();
+        return  e1.eval()+ "\wedge" + e2.eval();
     }
 
 
@@ -209,7 +209,7 @@ class Disjunction extends Exp {
 
     @Override
     public String eval() {
-        return e1.eval()+e2.eval();
+        return e1.eval()+ "\vee" + e2.eval();
     }
 
 }
@@ -217,9 +217,9 @@ class Disjunction extends Exp {
 class FunctionCall extends Exp {
 
     Signal s;
-    Expression e;
+    Exps e;
 
-    FunctionCall(Signal s, Expression e) {
+    FunctionCall(Signal s, Exps e) {
         this.s = s;
         this.e = e;
     }
@@ -244,7 +244,7 @@ class Expression extends Exp {
 
     @Override
     public String eval() {
-        return e.eval();
+        return "("+e.eval()+")";
     }
 
 
@@ -275,7 +275,7 @@ class Exps extends AST  {
 		for(Exp e: list) {
 			ls.add(e.eval());
 		}
-		return String.join(", ", ls);
+		return "(" + String.join(", ", ls) + ")";
 	}
 }
 
