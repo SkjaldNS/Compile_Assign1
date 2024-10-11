@@ -27,10 +27,11 @@ class Start extends Program {
 
     @Override
     public String eval() {
-	String return;
+	String result;
         for (Prograp p: ps){
-		return = return + p.eval;
+		result = result + p.eval;
 	}
+	return result;
     }
 }
 
@@ -46,7 +47,7 @@ class Hardware extends Program {
 
     @Override
     public String eval() {
-        return result;
+        return s.eval();
     }
 }
 
@@ -59,7 +60,7 @@ class Input extends Program {
     }
     @Override
     public String eval() {
-        return "<H2>" + String.join(",", inputs) + "</H2>";
+        return s.eval();
     }
 
 }
@@ -74,7 +75,7 @@ class Output extends Program {
 
     @Override
     public String eval() {
-        return "<H2>" + String.join(",", outputs) + "</H2>";
+        return s.eval();
     }
 
 }
@@ -89,11 +90,7 @@ class Latch extends Program {
 
     @Override
     public String eval() {
-        List<String> latches = new ArrayList<>();
-		for (ccParser.LatchContext i : ctx.IDENT()) {
-			latches.add(i.getText());
-		}
-		return "<H2>" + String.join(",", latches) + "</H2>";
+        return s.eval();
     }
 
 }
@@ -112,7 +109,7 @@ class Def extends Program {
 
     @Override
     public String eval() {
-
+	return s.eval()+a.eval()+e.eval()
     }
 
 
@@ -130,7 +127,7 @@ class Update extends Program {
 
     @Override
     public String eval() {
-        return ctx.e.visitSignal().getText() + "&larr" + ctx.e.visitExp().getText();
+        return s.eval()+e.eval()
     }
 
 
@@ -148,11 +145,7 @@ class SimInput extends Program {
 
     @Override
     public String eval() {
-        List<String> siminputs = new ArrayList<>();
-		for (ccParser.SiminputContext i : ctx.IDENT()) {
-			siminputs.add(i.getText());
-		}
-		return "<H2>" + String.join(",", siminputs) + "</H2>";
+	s.eval()
     }
 
 }
@@ -166,8 +159,12 @@ class Arg extends Program {
     }
 
     @Override
-    public String eval() [
-
+    public String eval() {
+	String result;    
+	for (Signal s: ls){
+		result = result + s.eval();
+	}
+	return result;
     }
 }
 
@@ -181,7 +178,7 @@ class Signal extends Exp {
 
     @Override
     public String eval() {
-        return ctx.getText();
+        return name;
     }
 
 
@@ -196,7 +193,7 @@ class Not extends Exp {
 
     @Override
     public String eval() {
-        return "(\\neg" + e.eval() + ")";
+        return e.eval();
     }
 }
 
@@ -212,7 +209,7 @@ class Conjunction extends Exp {
 
     @Override
     public String eval() {
-        return ctx.e1.visitExp() + "\\wedge" + ctx.e2.visitExp();
+        return e1.eval()+e2.eval();
     }
 
 
@@ -231,7 +228,7 @@ class Disjunction extends Exp {
 
     @Override
     public String eval() {
-        return ctx.e1.visitExp() + "\\vee" + ctx.e2.visitExp();
+        return e1.eval()+e2.eval();
     }
 
 }
@@ -249,7 +246,7 @@ class FunctionCall extends Exp {
 
     @Override
     public String eval() {
-        return ctx.IDENT().getText() + "(" + ctx.exps().visitExps() + ")";
+        return s.eval()+e.eval();
     }
 
 
@@ -257,7 +254,7 @@ class FunctionCall extends Exp {
 
 class Expression extends Exp {
 
-    Exp e;
+    Exp e1;
 
     Expression(Exp e) {
         this.e = e;
@@ -266,11 +263,7 @@ class Expression extends Exp {
 
     @Override
     public String eval() {
-        List<String> exps = new ArrayList<>();
-		for (ccParser.ExpContext i : ctx.exp()) {
-			exps.add(i.getText());
-		}
-		return "<H2>" + String.join(",", exps) + "</H2>";
+        return e.eval();
     }
 
 
