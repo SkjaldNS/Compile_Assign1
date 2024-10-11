@@ -110,5 +110,5 @@ public interface ccVisitor<T> extends ParseTreeVisitor<T> {
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitSimInputs(ccParser.SimInputsContext ctx);
+	T visitSimInput(ccParser.SimInputContext ctx);
 }

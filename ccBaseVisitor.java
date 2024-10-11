@@ -122,5 +122,5 @@ public class ccBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements ccV
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitSimInputs(ccParser.SimInputsContext ctx) { return visitChildren(ctx); }
+	@Override public T visitSimInput(ccParser.SimInputContext ctx) { return visitChildren(ctx); }
 }

@@ -99,7 +99,7 @@ class Interpreter extends AbstractParseTreeVisitor<AST>
 		return new Update((Signal) visit(ctx.i), (Exp) visit(ctx.e));
 	}
 
-	public AST visitSimInputs(ccParser.SimInputsContext ctx) {
+	public AST visitSimInput(ccParser.SimInputContext ctx) {
 		return new Siminput((Signal) visit(ctx.i), (Boolean) visit(ctx.b));
 	}
 
