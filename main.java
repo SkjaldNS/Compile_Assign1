@@ -86,7 +86,7 @@ class Interpreter extends AbstractParseTreeVisitor<String>
 	}
 
 	String visitHardwaredecl(ccParser.HardwaredeclContext ctx) {
-
+		return "<H1>"+ctx.getText()+"</H1>"
 	}
 
 	String visitInputs(ccParser.InputsContext ctx) {
