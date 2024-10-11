@@ -45,7 +45,7 @@ public class main {
 // This is parameterized over a return type "<T>" which is in our case
 // simply a Double.
 
-class Interpreter extends AbstractParseTreeVisitor<Double>
+class Interpreter extends AbstractParseTreeVisitor<String>
                   implements ccVisitor<String> {
     // todo - Java will complain that "Interpreter" does not in fact
     // implement "implVisitor" at the moment.
