@@ -1,7 +1,7 @@
 grammar cc;
 
 start   : 'hardware:' h = hardwaredecl
-          'inputs:' ip = inputs
+          'inputs:' i = inputs
           'outputs:' o = outputs
           'latches:' l = latches
           ('def:' d = def)*
@@ -20,10 +20,10 @@ exp : IDENT                              #Signal
 
 exps: e1=exp (c=',' e2=exp)*;
 args: i1=IDENT (c=',' i2=IDENT)*;
-hardwaredecl : i=IDENT;
-inputs: i=(IDENT)+;
-outputs: i=(IDENT)+;
-latches: i=(IDENT)+;
+hardwaredecl : IDENT;
+inputs: (IDENT)+;
+outputs: (IDENT)+;
+latches: (IDENT)+;
 def: (i=IDENT c1='(' a=args c2=')' eq='=' e=exp)*;
 updates : (i=IDENT eq='=' e=exp)+;
 siminputs : (i=IDENT eq='=' b=BOOLEANS)+;
