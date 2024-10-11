@@ -6,27 +6,24 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class AST{
-    abstract public String eval();
-};
+public abstract class AST{};
 
-abstract class Exp extends AST{
+abstract class Line extends AST{
     abstract public String eval();
 }
 
 
-class Start extends AST {
+class Sequence extends Line {
 	
-    List<Program> ps;
-
-    Start(List<Program> ps) {
+    List<Line> ps;
+    Start(List<Line> ps) {
         this.ps = ps;
     }
 
     @Override
     public String eval() {
 	String result;
-        for (Prograp p: ps){
+        for (Line p: ps){
 		result = result + p.eval;
 	}
 	return result;
@@ -35,7 +32,7 @@ class Start extends AST {
 
 
 
-class Hardware extends AST {
+class Hardware extends Line {
 
     Signal s;
 
@@ -49,7 +46,7 @@ class Hardware extends AST {
     }
 }
 
-class Input extends AST {
+class Input extends Line {
 
     Signal s;
 
@@ -63,7 +60,7 @@ class Input extends AST {
 
 }
 
-class Output extends AST {
+class Output extends Line {
 
     Signal s;
 
@@ -78,7 +75,7 @@ class Output extends AST {
 
 }
 
-class Latch extends AST {
+class Latch extends Line {
 
     Signal s;
 
@@ -93,7 +90,7 @@ class Latch extends AST {
 
 }
 
-class Def extends AST {
+class Def extends Line {
 
     Exp e;
     Signal s;
@@ -113,7 +110,7 @@ class Def extends AST {
 
 }
 
-class Update extends AST {
+class Update extends Line {
 
     Signal s;
     Exp e;
@@ -131,7 +128,7 @@ class Update extends AST {
 
 }
 
-class SimInput extends AST {
+class SimInput extends Line {
 
     Signal s;
     Boolean b;
@@ -148,22 +145,8 @@ class SimInput extends AST {
 
 }
 
-class Arg extends AST {
-
-    List<Signal> ls;
-
-    Arg(List<Signal> ls) {
-        this.ls = ls;
-    }
-
-    @Override
-    public String eval() {
-	String result;    
-	for (Signal s: ls){
-		result = result + s.eval();
-	}
-	return result;
-    }
+abstract class Exp extends AST{
+    abstract public String eval();
 }
 
 class Signal extends Exp {
@@ -266,3 +249,33 @@ class Expression extends Exp {
 
 
 }
+
+class List extends AST {
+	List<String> list;
+
+	List(List<String> l) {
+		this.l = l;
+	}
+
+	public String eval() {
+		return String.join(", ", list);
+			
+	}
+}
+
+class Exps extends AST  {
+	List<Exp> list;
+
+	List(List<Exp> l) {
+		this.l = l;
+	}
+
+	public String eval() {
+		List<String> ls;
+		for(Exp e: list) {
+			list.add(e.eval());
+		}
+		return String.join(", ", list)
+	}
+}
+
