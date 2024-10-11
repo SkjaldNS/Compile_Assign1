@@ -54,11 +54,11 @@ public class main {
 // simply a Double.
 
 class Interpreter extends AbstractParseTreeVisitor<String>
-                  implements ccVisitor<String> {
-    // todo - Java will complain that "Interpreter" does not in fact
-    // implement "implVisitor" at the moment.
-	String visitStart(ccParser.StartContext ctx) {
+		implements ccVisitor<String> {
 
+	String visitStart(ccParser.StartContext ctx) {
+		// Implementation needed
+		return null;
 	}
 
 	String visitSignal(ccParser.SignalContext ctx) {
@@ -66,83 +66,84 @@ class Interpreter extends AbstractParseTreeVisitor<String>
 	}
 
 	String visitNot(ccParser.NotContext ctx) {
-		return "(\\neg"+ctx.e.vistExp()+")";
+		return "(\\neg" + ctx.e.visitExp() + ")";
 	}
 
 	String visitDisjunction(ccParser.DisjunctionContext ctx) {
-		return ctx.e1.visitExp()+"\\vee"+ctx.e2.visitExp();
+		return ctx.e1.visitExp() + "\\vee" + ctx.e2.visitExp();
 	}
 
 	String visitExpression(ccParser.ExpressionContext ctx) {
-
+		// Implementation needed
+		return null;
 	}
 
 	String visitConjunction(ccParser.ConjunctionContext ctx) {
-		return ctx.e1.visitExp()+"\\wedge"+ctx.e2.visitExp();
+		return ctx.e1.visitExp() + "\\wedge" + ctx.e2.visitExp();
 	}
 
 	String visitFunction_call(ccParser.Function_callContext ctx) {
-		return ctx.IDENT().getText()+"("+ctx.exps().visitExps()+")";
+		return ctx.IDENT().getText() + "(" + ctx.exps().visitExps() + ")";
 	}
 
 	String visitExps(ccParser.ExpsContext ctx) {
-		List<String> exps = new ArrayList<String>();
-		for(ccParser.ExpsContext i : ctx.IDENT()) {
+		List<String> exps = new ArrayList<>();
+		for (ccParser.ExpContext i : ctx.exp()) {
 			exps.add(i.getText());
 		}
-		return "<H2>"+ String.join(",", exps)+"</H2>";
+		return "<H2>" + String.join(",", exps) + "</H2>";
 	}
-	
+
 	String visitArgs(ccParser.ArgsContext ctx) {
-		List<String> args = new ArrayList<String>();
-		for(ccParser.ArgsContext i : ctx.IDENT()) {
+		List<String> args = new ArrayList<>();
+		for (ccParser.ArgContext i : ctx.IDENT()) {
 			args.add(i.getText());
 		}
-		return "<H2>"+ String.join(",", args)+"</H2>";
+		return "<H2>" + String.join(",", args) + "</H2>";
 	}
 
 	String visitHardwaredecl(ccParser.HardwaredeclContext ctx) {
-		return "<H1>"+ctx.getText()+"</H1>";
+		return "<H1>" + ctx.getText() + "</H1>";
 	}
 
 	String visitInputs(ccParser.InputsContext ctx) {
-		List<String> inputs = new ArrayList<String>();
-        	for(ccParser.InputsContext i : ctx.IDENT()) {
-            		inputs.add(i.getText());
-        	}
-        	return "<H2>"+ String.join(",", inputs)+"</H2>";
-
-	String visitOutputs(ccParser.OutputsContext ctx){
-			List<String> outputs = new ArrayList<String>();
-			for (ccParser.OutputsContext i : ctx.IDENT()) {
-				outputs.add(i.getText());
-			}
-			return "<H2>" + String.join(",", outputs) + "</H2>";
+		List<String> inputs = new ArrayList<>();
+		for (ccParser.InputContext i : ctx.IDENT()) {
+			inputs.add(i.getText());
 		}
-	String visitLatches(ccParser.LatchesContext ctx) {
-		List<String> latches = new ArrayList<String>();
+		return "<H2>" + String.join(",", inputs) + "</H2>";
+	}
 
-		for(ccParser.LatchesContext i : ctx.IDENT()) {
+	String visitOutputs(ccParser.OutputsContext ctx) {
+		List<String> outputs = new ArrayList<>();
+		for (ccParser.OutputContext i : ctx.IDENT()) {
+			outputs.add(i.getText());
+		}
+		return "<H2>" + String.join(",", outputs) + "</H2>";
+	}
+
+	String visitLatches(ccParser.LatchesContext ctx) {
+		List<String> latches = new ArrayList<>();
+		for (ccParser.LatchContext i : ctx.IDENT()) {
 			latches.add(i.getText());
 		}
-		return "<H2>"+String.join(",",latches)+"</H2>";
+		return "<H2>" + String.join(",", latches) + "</H2>";
 	}
 
 	String visitDef(ccParser.DefContext ctx) {
+		// Implementation needed
+		return null;
 	}
 
 	String visitUpdates(ccParser.UpdatesContext ctx) {
-		return ctx.e.visitSignal().getText()+"&larr"+ctx.e.visitExp().getText();
+		return ctx.e.visitSignal().getText() + "&larr" + ctx.e.visitExp().getText();
 	}
 
 	String visitSiminputs(ccParser.SiminputsContext ctx) {
-		List<String> siminputs = new ArrayList<String>();
-		for(ccParser.SiminputsContext i : ctx.IDENT()) {
+		List<String> siminputs = new ArrayList<>();
+		for (ccParser.SiminputContext i : ctx.IDENT()) {
 			siminputs.add(i.getText());
 		}
-		return "<H2>"+ String.join(",", siminputs)+"</H2>";
-
+		return "<H2>" + String.join(",", siminputs) + "</H2>";
 	}
-
 }
-
