@@ -58,7 +58,7 @@ class Interpreter extends AbstractParseTreeVisitor<String>
 	}
 
 	String visitNot(ccParser.NotContext ctx) {
-
+		return "\neg"
 	}
 
 	String visitDisjunction(ccParser.DisjunctionContext ctx) {
