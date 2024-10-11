@@ -58,8 +58,14 @@ class Interpreter extends AbstractParseTreeVisitor<String>
 
 	String visitStart(ccParser.StartContext ctx) {
 		// Implementation needed
-		return null;
+		List<T> = new ArrayList<T>();
+		for(ccParser.CmdContext i : ctx.cs) {
+			T.add(i.visitCmd());
+		}
+		return new Sequence(T);
 	}
+
+
 
 	String visitSignal(ccParser.SignalContext ctx) {
 		return ctx.getText();
