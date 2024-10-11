@@ -90,19 +90,11 @@ class Interpreter extends AbstractParseTreeVisitor<String>
 	}
 
 	String visitInputs(ccParser.InputsContext ctx) {
-		String result = "<H2>";
-		Boolean isFirst = 1;
-		for (e: ctx.IDENT()) {
-			if (isFirst) {
-				result = result + e.getText();
-				isFirst = 0;
-			}
-			else {
-				result = result + ", " + e.getText();
-			}
-		}
-		return result + "</H2>"
-	}
+		List<String> inputs = new ArrayList<String>();
+        	for(ccParser.InputsContext i : ctx.IDENT() {
+            		inputs.add(i.getText());
+        	}
+        	return "<H2>"+ String.join("," signals)+"</H2>"
 
 	String visitOutputs(ccParser.OutputsContext ctx) {
 		return "<H2>"+ctx.getText()+"</H2>"
