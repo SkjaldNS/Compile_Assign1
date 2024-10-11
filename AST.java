@@ -261,16 +261,18 @@ class Expression extends Exp {
 }
 
 class Args extends AST {
-	String s;
+	List<String> list;
 
-	Args(String s) {
-		this.s = s;
+	Args(List<String> l) {
+		this.list = l;
 	}
 
 	public String eval() {
-		return s;
-			
-	}
+		List<String> ls = new ArrayList<String>();
+        for(String s: list) {
+            ls.add(s);
+        }
+        return String.join(" ", ls);
 }
 
 class Exps extends AST  {

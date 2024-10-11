@@ -19,7 +19,7 @@ exp : x=IDENT                            #Signal
     | '(' e=exp ')'                      #Expression
     ;
 
-args: IDENT (',' IDENT)*;
+args: x1=IDENT x2=IDENT*;
 exps: e1=exp (c+=',' e2+=exp)*;
 
 BOOLEAN: '0'|'1';
