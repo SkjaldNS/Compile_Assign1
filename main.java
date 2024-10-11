@@ -5,6 +5,9 @@ import org.antlr.v4.runtime.CharStreams;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.io.File;
+import java.io.IOException;
+import java.io.FileWriter;
 
 public class main {
     public static void main(String[] args) throws IOException{
@@ -36,6 +39,23 @@ public class main {
 	// Construct an interpreter and run it on the parse tree
 	Interpreter interpreter = new Interpreter();
 	Line result=interpreter.visit(parseTree);
+	String output = result.eval();
+	try {
+		File html = new File("output.html");
+		if(html.createNewFile()){
+			FileWriter writer = new FileWriter("output.html");
+			writer.write(output);
+			writer.close();
+			System.out.println("output.html created.");
+		}
+		else {
+			system.out.println("File could not be created.");
+		}
+	}
+	catch (IOException e) {
+		System.out.println("An error occured.");
+		e.printStackTrace();
+	}
     }
 }
 
