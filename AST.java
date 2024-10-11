@@ -140,7 +140,7 @@ class SimInput extends Line {
 
     @Override
     public String eval() {
-	s.eval()
+	    return s.eval();
     }
 
 }
