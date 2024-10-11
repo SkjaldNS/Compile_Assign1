@@ -54,9 +54,9 @@ public class main {
 // simply a Double.
 
 class Interpreter extends AbstractParseTreeVisitor<String>
-		implements ccVisitor<String> {
+		implements ccVisitor<AST> {
 
-	String visitStart(ccParser.StartContext ctx) {
+	AST visitStart(ccParser.StartContext ctx) {
 		// Implementation needed
 		List<String> ps = new ArrayList<String>();
 		for(ccParser.CmdContext i : ctx.cs) {
@@ -65,65 +65,65 @@ class Interpreter extends AbstractParseTreeVisitor<String>
 		return new Sequence(ps);
 	}
 
-	String visitSignal(ccParser.SignalContext ctx) {
+	AST visitSignal(ccParser.SignalContext ctx) {
 
 	}
 
-	String visitNot(ccParser.NotContext ctx) {
+	AST visitNot(ccParser.NotContext ctx) {
 
 	}
 
-	String visitDisjunction(ccParser.DisjunctionContext ctx) {
+	AST visitDisjunction(ccParser.DisjunctionContext ctx) {
 
 	}
 
-	String visitExpression(ccParser.ExpressionContext ctx) {
+	AST visitExpression(ccParser.ExpressionContext ctx) {
 		// Implementation needed
 		return null;
 	}
 
-	String visitConjunction(ccParser.ConjunctionContext ctx) {
+	AST visitConjunction(ccParser.ConjunctionContext ctx) {
 
 	}
 
-	String visitFunction_call(ccParser.Function_callContext ctx) {
+	AST visitFunction_call(ccParser.Function_callContext ctx) {
 	
 	}
 
-	String visitExps(ccParser.ExpsContext ctx) {
+	AST visitExps(ccParser.ExpsContext ctx) {
 
 	}
 
-	String visitArgs(ccParser.ArgsContext ctx) {
+	AST visitArgs(ccParser.ArgsContext ctx) {
 
 	}
 
-	String visitHardwaredecl(ccParser.HardwaredeclContext ctx) {
+	AST visitHardwaredecl(ccParser.HardwaredeclContext ctx) {
 
 	}
 
-	String visitInputs(ccParser.InputsContext ctx) {
+	AST visitInputs(ccParser.InputsContext ctx) {
 
 	}
 
-	String visitOutputs(ccParser.OutputsContext ctx) {
+	AST visitOutputs(ccParser.OutputsContext ctx) {
 	
 	}
 
-	String visitLatches(ccParser.LatchesContext ctx) {
+	AST visitLatches(ccParser.LatchesContext ctx) {
 
 	}
 
-	String visitDef(ccParser.DefContext ctx) {
+	AST visitDef(ccParser.DefContext ctx) {
 		// Implementation needed
 		return null;
 	}
 
-	String visitUpdates(ccParser.UpdatesContext ctx) {
+	AST visitUpdates(ccParser.UpdatesContext ctx) {
 
 	}
 
-	String visitSiminputs(ccParser.SiminputsContext ctx) {
+	AST visitSiminputs(ccParser.SiminputsContext ctx) {
 
 	}
 }
