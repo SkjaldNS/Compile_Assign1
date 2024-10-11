@@ -42,7 +42,7 @@ class Hardware extends Line {
 
     @Override
     public String eval() {
-        return s.eval();
+        return "<H1>" + s.eval() + "</H1>";
     }
 }
 
@@ -55,7 +55,7 @@ class Input extends Line {
     }
     @Override
     public String eval() {
-        return s.eval();
+        return "<H2>" + s.eval() + "</H2>";
     }
 
 }
@@ -70,7 +70,7 @@ class Output extends Line {
 
     @Override
     public String eval() {
-        return s.eval();
+        return "<H2>" + s.eval() + "</H2>";
     }
 
 }
@@ -85,7 +85,7 @@ class Latch extends Line {
 
     @Override
     public String eval() {
-        return s.eval();
+        return "<H2>" + s.eval() + "</H2>";
     }
 
 }
@@ -94,9 +94,9 @@ class Def extends Line {
 
     Exp e;
     Signal s;
-    Arg a;
+    Args a;
 
-    Def(Exp e, Signal s, Arg a) {
+    Def(Exp e, Signal s, Args a) {
         this.e = e;
         this.s = s;
         this.a = a;
@@ -104,7 +104,7 @@ class Def extends Line {
 
     @Override
     public String eval() {
-	return s.eval()+a.eval()+e.eval()
+	return "<H2>" + s.eval() + a.eval()+ e.eval() + "</H2>";
     }
 
 
@@ -122,7 +122,7 @@ class Update extends Line {
 
     @Override
     public String eval() {
-        return s.eval()+e.eval()
+        return "<H2>" + s.eval()+e.eval() + "</H2>";
     }
 
 
@@ -140,7 +140,7 @@ class SimInput extends Line {
 
     @Override
     public String eval() {
-	    return s.eval();
+	    return "<H2>" + s.eval() + b + "</H2>";
     }
 
 }
