@@ -68,7 +68,11 @@ class Latch extends Program {
 
     @Override
     public String eval() {
-
+        List<String> latches = new ArrayList<>();
+		for (ccParser.LatchContext i : ctx.IDENT()) {
+			latches.add(i.getText());
+		}
+		return "<H2>" + String.join(",", latches) + "</H2>";
     }
 
 }
@@ -87,7 +91,7 @@ class Update extends Program {
 
     @Override
     public String eval() {
-
+        return ctx.e.visitSignal().getText() + "&larr" + ctx.e.visitExp().getText();
     }
 
 
@@ -98,16 +102,28 @@ class SimInput extends Program {
 
     @Override
     public String eval() {
-
+        List<String> siminputs = new ArrayList<>();
+		for (ccParser.SiminputContext i : ctx.IDENT()) {
+			siminputs.add(i.getText());
+		}
+		return "<H2>" + String.join(",", siminputs) + "</H2>";
     }
 
+}
+
+class Arg extends Program {
+
+    @Override
+    public String eval() [
+
+    }
 }
 
 class Signal extends Exp {
 
     @Override
     public String eval() {
-
+        return ctx.getText();
     }
 
 
@@ -130,7 +146,7 @@ class Conjunction extends Exp {
 
     @Override
     public String eval() {
-
+        return ctx.e1.visitExp() + "\\wedge" + ctx.e2.visitExp();
     }
 
 
@@ -141,7 +157,7 @@ class Disjunction extends Exp {
 
     @Override
     public String eval() {
-
+        return ctx.e1.visitExp() + "\\vee" + ctx.e2.visitExp();
     }
 
 }
@@ -151,7 +167,7 @@ class FunctionCall extends Exp {
 
     @Override
     public String eval() {
-
+        return ctx.IDENT().getText() + "(" + ctx.exps().visitExps() + ")";
     }
 
 
@@ -162,7 +178,11 @@ class Expression extends Exp {
 
     @Override
     public String eval() {
-
+        List<String> exps = new ArrayList<>();
+		for (ccParser.ExpContext i : ctx.exp()) {
+			exps.add(i.getText());
+		}
+		return "<H2>" + String.join(",", exps) + "</H2>";
     }
 
 
