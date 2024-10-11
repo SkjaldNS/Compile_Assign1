@@ -9,7 +9,7 @@ start   : 'hardware:' h = hardwaredecl
           'siminputs:' s = siminputs
           EOF ;
 
-exp : IDENT                              #Signal
+exp : x=IDENT                              #Signal
     | op='/' e=exp                       #Not
     | e1=exp op='*'? e2=exp              #Conjunction
     | e1=exp op='+' e2=exp               #Disjunction
