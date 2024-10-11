@@ -42,15 +42,15 @@ class Sequence extends Line {
 
 class Hardware extends Line {
 
-    Signal s;
+    String s;
 
-    Hardware(Signal s) {
+    Hardware(String s) {
         this.s = s;
     }
 
     @Override
     public String eval() {
-        return "<H1>" + s.eval() + "</H1>\n";
+        return "<H1>" + s + "</H1>\n";
     }
 }
 
@@ -101,18 +101,18 @@ class Latch extends Line {
 class Def extends Line {
 
     Exp e;
-    Signal s;
+    String s;
     Args a;
 
-    Def(Exp e, Signal s, Args a) {
-        this.e = e;
+    Def(String s, Args a, Exp e) {
         this.s = s;
         this.a = a;
+        this.e = e;
     }
 
     @Override
     public String eval() {
-	return "<H2> Def </H2>\n\\(\\mathit{"+ s.eval() + "} ("+ a.eval() + ")=("
+	return "<H2> Def </H2>\n\\(\\mathit{"+ s + "} ("+ a.eval() + ")=("
             + e.eval()+")\\)<br>";
     }
 
@@ -121,17 +121,17 @@ class Def extends Line {
 
 class Update extends Line {
 
-    Signal s;
+    String s;
     Exp e;
 
-    Update(Signal s, Exp e) {
+    Update(String s, Exp e) {
         this.s = s;
         this.e = e;
     }
 
     @Override
     public String eval() {
-        return "<H2> Updates </H2>\n"+ s.eval()+"&larr;\\(\\mathit{"
+        return "<H2> Updates </H2>\n"+ s +"&larr;\\(\\mathit{"
                 +e.eval()+"\n";
     }
 
@@ -140,17 +140,17 @@ class Update extends Line {
 
 class SimInput extends Line {
 
-    Signal s;
+    String s;
     Boolean b;
 
-    SimInput(Signal s, Boolean b) {
+    SimInput(String s, Boolean b) {
         this.s = s;
         this.b = b;
     }
 
     @Override
     public String eval() {
-	    return "<H2> Simulation Inputs </H2>\n"+ s.eval() + b + "\n";
+	    return "<H2> Simulation Inputs </H2>\n"+ s + b + "\n";
     }
 
 }
@@ -226,10 +226,10 @@ class Disjunction extends Exp {
 
 class FunctionCall extends Exp {
 
-    Signal s;
+    String s;
     Exps e;
 
-    FunctionCall(Signal s, Exps e) {
+    FunctionCall(String s, Exps e) {
         this.s = s;
         this.e = e;
     }
@@ -237,7 +237,7 @@ class FunctionCall extends Exp {
 
     @Override
     public String eval() {
-        return s.eval()+e.eval();
+        return s + e.eval();
     }
 
 
