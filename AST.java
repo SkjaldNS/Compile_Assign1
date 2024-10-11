@@ -24,7 +24,7 @@ class Sequence extends Line {
     public String eval() {
 	String result;
         for (Line p: ps){
-		result = result + p.eval;
+		result = result + p.eval();
 	}
 	return result;
     }
