@@ -3,9 +3,9 @@ grammar cc;
 start   : cs+=line* EOF ;
 
 line :  'hardware:' x=IDENT                                        #Hardware
-	|'inputs:' x=(IDENT)+                                      #Input
-	|'outputs:' x=(IDENT)+                                     #Output
-	|'latches:' x=(IDENT)+                                     #Latch   
+	|'inputs:' LIST                                            #Input
+	|'outputs:' LIST                                           #Output
+	|'latches:' LIST                                           #Latch   
 	|'def:' (i=IDENT c1='(' l=LIST c2=')' eq='=' e=exp)*       #Def
 	|'updates:' (i=IDENT eq='=' e=exp)+                        #Update
 	|'siminputs:' (i=IDENT eq='=' b=BOOLEAN)+                  #SimInput
