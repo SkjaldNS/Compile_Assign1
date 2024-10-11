@@ -80,28 +80,28 @@ public class ccBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements ccV
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitHardwaredecl(ccParser.HardwaredeclContext ctx) { return visitChildren(ctx); }
+	@Override public T visitHardware(ccParser.HardwareContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitInputs(ccParser.InputsContext ctx) { return visitChildren(ctx); }
+	@Override public T visitInput(ccParser.InputContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitOutputs(ccParser.OutputsContext ctx) { return visitChildren(ctx); }
+	@Override public T visitOutput(ccParser.OutputContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitLatches(ccParser.LatchesContext ctx) { return visitChildren(ctx); }
+	@Override public T visitLatch(ccParser.LatchContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -115,12 +115,12 @@ public class ccBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements ccV
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitUpdates(ccParser.UpdatesContext ctx) { return visitChildren(ctx); }
+	@Override public T visitUpdate(ccParser.UpdateContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitSiminputs(ccParser.SiminputsContext ctx) { return visitChildren(ctx); }
+	@Override public T visitSimInputs(ccParser.SimInputsContext ctx) { return visitChildren(ctx); }
 }
