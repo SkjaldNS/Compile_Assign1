@@ -266,7 +266,7 @@ class Args extends AST {
 class Exps extends AST  {
 	List<Exp> list;
 
-	List(List<Exp> l) {
+	Exps(List<Exp> l) {
 		this.list = l;
 	}
 
