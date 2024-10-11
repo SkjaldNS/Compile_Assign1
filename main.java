@@ -90,7 +90,18 @@ class Interpreter extends AbstractParseTreeVisitor<String>
 	}
 
 	String visitInputs(ccParser.InputsContext ctx) {
-		return "<H2>"+ctx.getText()+"</H2>"
+		String result = "<H2>";
+		Boolean isFirst = 1;
+		for (e: ctx.IDENT()) {
+			if (isFirst) {
+				result = result + e.getText();
+				isFirst = 0;
+			}
+			else {
+				result = result + ", " + e.getText();
+			}
+		}
+		return result + "</H2>"
 	}
 
 	String visitOutputs(ccParser.OutputsContext ctx) {
