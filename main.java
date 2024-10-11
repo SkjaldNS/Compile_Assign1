@@ -79,7 +79,7 @@ class Interpreter extends AbstractParseTreeVisitor<String>
 
 	String visitExps(ccParser.ExpsContext ctx) {
 		List<String> exps = new ArrayList<String>();
-		for(ccParser.ExpsContext i : ctx.exp()) {
+		for(ccParser.ExpsContext i : ctx.IDENT()) {
 			exps.add(i.getText());
 		}
 		return "<H2>"+ String.join("," exps)+"</H2>";
@@ -130,7 +130,7 @@ class Interpreter extends AbstractParseTreeVisitor<String>
 
 	String visitSiminputs(ccParser.SiminputsContext ctx) {
 		List<String> siminputs = new ArrayList<String>();
-		for(ccParser.SiminputsContext i : ctx.siminput()) {
+		for(ccParser.SiminputsContext i : ctx.IDENT()) {
 			siminputs.add(i.getText());
 		}
 		return "<H2>"+ String.join("," siminputs)+"</H2>";
