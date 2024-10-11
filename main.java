@@ -35,7 +35,7 @@ public class main {
 
 	// Construct an interpreter and run it on the parse tree
 	Interpreter interpreter = new Interpreter();
-	Double result=interpreter.visit(parseTree);
+	String result=interpreter.visit(parseTree);
 	System.out.println("The result is: "+result);
     }
 }
@@ -46,53 +46,9 @@ public class main {
 // simply a Double.
 
 class Interpreter extends AbstractParseTreeVisitor<Double>
-                  implements ccVisitor<Double> {
+                  implements ccVisitor<String> {
     // todo - Java will complain that "Interpreter" does not in fact
     // implement "implVisitor" at the moment.
-
-
-	public Double visitStart(ccParser.StartContext ctx){
-	    return visit(ctx.e);
-	}
-	public Double visitVariable(ccParser.VariableContext ctx){
-	    System.err.println("Variables are not yet supported.\n");
-	    System.exit(-1);
-	    return null; }
-	public Double visitAddSub(ccParser.AddSubContext ctx){
-	    // e1=exp op=('+'|'-') e2=exp
-	    System.out.println("Addition/Subtraction");
-	    Double d1=visit(ctx.e1);
-	    Double d2=visit(ctx.e2);
-	    if (ctx.op.getText().equals("+")){
-		System.out.println("Add "+d1+" + "+d2+" = "+(d1+d2));
-		return d1+d2;
-	    }
-	    else{
-		System.out.println("Sub "+d1+" - "+d2+" = "+(d1-d2));
-		return d1-d2;
-	    }
-	}
-	public Double visitConstant(ccParser.ConstantContext ctx){
-	    String s=ctx.f.getText();
-	    System.out.println("Constant "+s);
-	    return Double.valueOf(s);
-	}
-	public Double visitParen(ccParser.ParenContext ctx){ return visit(ctx.e); }
-	public Double visitMultDiv(ccParser.MultDivContext ctx){
-	    System.out.println("Mult/Div");
-	    Double d1=visit(ctx.e1);
-	    Double d2=visit(ctx.e2);
-	    if (ctx.op.getText().equals("*")){
-		System.out.println("Mult "+d1+" * "+d2+" = "+(d1*d2));
-		return d1*d2;
-	    }
-	    else{
-		System.out.println("Div "+d1+" / "+d2+" = "+(d1/d2));				
-		return d1/d2;	
-	    }
-    
-	}
-
 
 }
 
