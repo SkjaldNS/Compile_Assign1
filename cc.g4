@@ -3,10 +3,10 @@ grammar cc;
 start   : cs+=line* EOF ;
 
 line :  'hardware:' x=IDENT                                     #Hardware
-	|'inputs:' l=list                                      #Input
-	|'outputs:' l=list                                      #Output
-	|'latches:' l=list                                      #Latch   
-	|'def:' (i=IDENT '(' l=list ')' '=' e=exp)*             #Def
+	|'inputs:' l=args                                      #Input
+	|'outputs:' l=args                                      #Output
+	|'latches:' l=args                                      #Latch   
+	|'def:' (i=IDENT '(' l=args ')' '=' e=exp)*             #Def
 	|'updates:' (i=IDENT '=' e=exp)+                        #Update
 	|'siminputs:' (i=IDENT '=' b=BOOLEAN)+                  #SimInput
 	;
