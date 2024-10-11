@@ -119,7 +119,7 @@ class Interpreter extends AbstractParseTreeVisitor<AST>
 		return new Disjunction((Exp) visit(ctx.e1), (Exp) visit(ctx.e2));
 	}
 
-	AST visitExpression(ccParser.ExpressionContext ctx) {
+	public AST visitExpression(ccParser.ExpressionContext ctx) {
 		return new Expression((Exp) visit(ctx.e));
 	}
 
@@ -136,7 +136,7 @@ class Interpreter extends AbstractParseTreeVisitor<AST>
 	}
 
 
-	AST visitExps(ccParser.ExpsContext ctx) {
+	public AST visitExps(ccParser.ExpsContext ctx) {
 		List<Exp> l = new ArrayList<Exp>();
 		for(ccParser.ExpContext i : ctx) {
 			l.add((Exp) visit(i));
