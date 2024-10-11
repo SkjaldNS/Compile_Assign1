@@ -50,7 +50,10 @@ class Interpreter extends AbstractParseTreeVisitor<String>
     // todo - Java will complain that "Interpreter" does not in fact
     // implement "implVisitor" at the moment.
 	String visitStart(ccParser.StartContext ctx) {
-
+		String title = "Pretty Printer";
+		String mainText = visitChildren(ctx);
+		return "<!DOCTYPE html>\n"+ "" +
+				"<html><head><title>"+
 	}
 
 	String visitSignal(ccParser.SignalContext ctx) {
@@ -117,7 +120,7 @@ class Interpreter extends AbstractParseTreeVisitor<String>
 		for(ccParser.LatchesContext i : ctx.IDENT()) {
 			latches.add(i.getText());
 		}
-		return "<H2>"+ctx.getText()+"</H2>";
+		return "<H2>"+String.join(",",latches)+"</H2>";
 	}
 
 	String visitDef(ccParser.DefContext ctx) {
