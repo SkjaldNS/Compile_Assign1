@@ -253,7 +253,7 @@ class Expression extends Exp {
 class Args extends AST {
 	List<String> list;
 
-	List(List<String> l) {
+	Args(List<String> l) {
 		this.list = l;
 	}
 
