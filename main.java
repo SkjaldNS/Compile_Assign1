@@ -35,16 +35,7 @@ public class main {
 
 	// Construct an interpreter and run it on the parse tree
 	Interpreter interpreter = new Interpreter();
-	String result=interpreter.visit(parseTree);
-	System.out.println("The result is: "+result);
-		return "<!DOCTYPE html>\n"+ "" +
-				"<html><head><title>"+title+"</title>\n"+
-				"<script src=\"https://polyfill.io/v3/polyfill.min.js?features=es6\"></script>\n" +
-				"<script type=\"text/javascript\" id=\"MathJax-script\" async\n" +
-				"src=\"https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js\">\n" +
-				"</script></head><body>\n" +
-				mainText + "\n" +
-				"</body></html>";
+	Program result=interpreter.visit(parseTree);
     }
 }
 
