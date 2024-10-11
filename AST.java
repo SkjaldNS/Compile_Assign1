@@ -16,6 +16,7 @@ abstract class Exp extends AST{
     abstract public String eval();
 }
 
+
 class Start extends Program {
     List<Program> ps;
 
@@ -33,11 +34,14 @@ class Start extends Program {
     }
 }
 
-class Hardware extends Program {
-    String name;
 
-    Hardware(String name) {
-        this.name = name;
+
+class Hardware extends Program {
+
+    Signal s;
+
+    Hardware(Signal s) {
+        this.s = s;
     }
 
     @Override
@@ -48,6 +52,11 @@ class Hardware extends Program {
 
 class Input extends Program {
 
+    Signal s;
+
+    Input(Signal s) {
+        this.s = s;
+    }
     @Override
     public String eval() {
         return "<H2>" + String.join(",", inputs) + "</H2>";
@@ -57,6 +66,13 @@ class Input extends Program {
 
 class Output extends Program {
 
+
+    Signal s;
+
+    Output(Signal s) {
+        this.s = s;
+    }
+
     @Override
     public String eval() {
         return "<H2>" + String.join(",", outputs) + "</H2>";
@@ -65,6 +81,12 @@ class Output extends Program {
 }
 
 class Latch extends Program {
+
+    Signal s;
+
+    Latch(Signal s) {
+        this.s = s;
+    }
 
     @Override
     public String eval() {
@@ -79,6 +101,18 @@ class Latch extends Program {
 
 class Def extends Program {
 
+    Exp e;
+
+    Signal s;
+
+    Arg a;
+
+    Def(Exp e, Signal s, Arg a) {
+        this.e = e;
+        this.s = s;
+        this.a = a;
+    }
+
     @Override
     public String eval() {
 
@@ -88,6 +122,14 @@ class Def extends Program {
 }
 
 class Update extends Program {
+
+    Signal s;
+    Exp e;
+
+    Update(Signal s, Exp e) {
+        this.s = s;
+        this.e = e;
+    }
 
     @Override
     public String eval() {
@@ -99,6 +141,14 @@ class Update extends Program {
 
 class SimInput extends Program {
 
+    Signal s;
+
+    Boolean b;
+
+    SimInput(Signal s, Boolean b) {
+        this.s = s;
+        this.b = b;
+    }
 
     @Override
     public String eval() {
@@ -113,6 +163,12 @@ class SimInput extends Program {
 
 class Arg extends Program {
 
+    List<Signal> ls;
+
+    Arg(List<Signal> ls) {
+        this.ls = ls;
+    }
+
     @Override
     public String eval() [
 
@@ -120,6 +176,12 @@ class Arg extends Program {
 }
 
 class Signal extends Exp {
+
+    String name;
+
+    Signal(String name) {
+        this.name = name;
+    }
 
     @Override
     public String eval() {
@@ -144,6 +206,14 @@ class Not extends Exp {
 
 class Conjunction extends Exp {
 
+    Exp e1;
+    Exp e2;
+
+    Conjunction(Exp e1, Exp e2) {
+        this.e1 = e1;
+        this.e2 = e2;
+    }
+
     @Override
     public String eval() {
         return ctx.e1.visitExp() + "\\wedge" + ctx.e2.visitExp();
@@ -153,6 +223,14 @@ class Conjunction extends Exp {
 }
 
 class Disjunction extends Exp {
+
+    Exp e1;
+    Exp e2;
+
+    Disjunction(Exp e1, Exp e2) {
+        this.e1 = e1;
+        this.e2 = e2;
+    }
 
 
     @Override
@@ -164,6 +242,15 @@ class Disjunction extends Exp {
 
 class FunctionCall extends Exp {
 
+    Signal s;
+
+    Expression e;
+
+    FunctionCall(Signal s, Expression e) {
+        this.s = s;
+        this.e = e;
+    }
+
 
     @Override
     public String eval() {
@@ -174,6 +261,12 @@ class FunctionCall extends Exp {
 }
 
 class Expression extends Exp {
+
+    Exp e;
+
+    Expression(Exp e) {
+        this.e = e;
+    }
 
 
     @Override
