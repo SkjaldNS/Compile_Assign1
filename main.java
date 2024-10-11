@@ -54,7 +54,7 @@ class Interpreter extends AbstractParseTreeVisitor<String>
 	}
 
 	String visitSignal(ccParser.SignalContext ctx) {
-
+		return ctx.getText();
 	}
 
 	String visitNot(ccParser.NotContext ctx) {
