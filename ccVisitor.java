@@ -74,25 +74,25 @@ public interface ccVisitor<T> extends ParseTreeVisitor<T> {
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitHardwaredecl(ccParser.HardwaredeclContext ctx);
+	T visitHardware(ccParser.HardwareContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link ccParser#inputs}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitInputs(ccParser.InputsContext ctx);
+	T visitInput(ccParser.InputContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link ccParser#outputs}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitOutputs(ccParser.OutputsContext ctx);
+	T visitOutput(ccParser.OutputContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link ccParser#latches}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitLatches(ccParser.LatchesContext ctx);
+	T visitLatch(ccParser.LatchContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link ccParser#def}.
 	 * @param ctx the parse tree
@@ -104,11 +104,11 @@ public interface ccVisitor<T> extends ParseTreeVisitor<T> {
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitUpdates(ccParser.UpdatesContext ctx);
+	T visitUpdate(ccParser.UpdateContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link ccParser#siminputs}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitSiminputs(ccParser.SiminputsContext ctx);
+	T visitSimInputs(ccParser.SimInputsContext ctx);
 }
