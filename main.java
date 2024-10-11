@@ -78,11 +78,19 @@ class Interpreter extends AbstractParseTreeVisitor<String>
 	}
 
 	String visitExps(ccParser.ExpsContext ctx) {
-
+		List<String> exps = new ArrayList<String>();
+		for(ccParser.ExpsContext i : ctx.exp()) {
+			exps.add(i.getText());
+		}
+		return "<H2>"+ String.join("," exps)+"</H2>"
 	}
 	
 	String visitArgs(ccParser.ArgsContext ctx) {
-
+		List<String> args = new ArrayList<String>();
+		for(ccParser.ArgsContext i : ctx.IDENT()) {
+			args.add(i.getText());
+		}
+		return "<H2>"+ String.join("," args)+"</H2>"
 	}
 
 	String visitHardwaredecl(ccParser.HardwaredeclContext ctx) {
@@ -96,14 +104,19 @@ class Interpreter extends AbstractParseTreeVisitor<String>
         	}
         	return "<H2>"+ String.join("," inputs)+"</H2>"
 
-	String visitOutputs(ccParser.OutputsContext ctx) {
+	String visitOutputs(ccParser.OutputsContext ctx){
 			List<String> outputs = new ArrayList<String>();
-			for(ccParser.OutputsContext i : ctx.IDENT()) {
+			for (ccParser.OutputsContext i : ctx.IDENT()) {
 				outputs.add(i.getText());
 			}
-			return "<H2>"+ String.join("," outputs)+"</H2>"
-
+			return "<H2>" + String.join(","outputs) + "</H2>"
+		}
 	String visitLatches(ccParser.LatchesContext ctx) {
+		List<String> latches = new ArrayList<String>();
+
+		for(ccParser.LatchesContext i : ctx.IDENT()) {
+			latches.add(i.getText());
+		}
 		return "<H2>"+ctx.getText()+"</H2>"
 	}
 
