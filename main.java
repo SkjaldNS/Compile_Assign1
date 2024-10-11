@@ -49,11 +49,11 @@ class Interpreter extends AbstractParseTreeVisitor<String>
 
 	AST visitStart(ccParser.StartContext ctx) {
 		// Implementation needed
-		List<String> ps = new ArrayList<String>();
+		List<Program> ps = new ArrayList<Program>();
 		for(ccParser.CmdContext i : ctx.cs) {
 			ps.add((String) visit(ps));
 		}
-		return new Sequence(ps);
+		return new Start(ps);
 	}
 
 	AST visitSignal(ccParser.SignalContext ctx) {
