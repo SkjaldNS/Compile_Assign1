@@ -131,8 +131,8 @@ class Interpreter extends AbstractParseTreeVisitor<AST>
 	public AST visitArgs(ccParser.ArgsContext ctx) {
 		List<String> ls = new ArrayList<String>();
 		ls.add(ctx.x1.getText());
-		for(String i : ctx.x2) {
-			ls.add(i);
+		for(ccParser.ArgsContext i : ctx.x2) {
+			ls.add(parser.getVocabulary().getSymbolicName(i));
 		}
 		return new Args(ls);
 	}
