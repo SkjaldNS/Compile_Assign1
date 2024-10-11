@@ -91,7 +91,7 @@ class Interpreter extends AbstractParseTreeVisitor<String>
 
 	String visitInputs(ccParser.InputsContext ctx) {
 		List<String> inputs = new ArrayList<String>();
-        	for(ccParser.InputsContext i : ctx.IDENT() {
+        	for(ccParser.InputsContext i : ctx.IDENT()) {
             		inputs.add(i.getText());
         	}
         	return "<H2>"+ String.join("," signals)+"</H2>"
