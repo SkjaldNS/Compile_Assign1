@@ -38,7 +38,7 @@ public class main {
 
 	// Construct an interpreter and run it on the parse tree
 	Interpreter interpreter = new Interpreter();
-	Line result=interpreter.visit(parseTree);
+	Line result=(Line)interpreter.visit(parseTree);
 	String output = result.eval();
 	try {
 		File html = new File("output.html");
@@ -49,7 +49,7 @@ public class main {
 			System.out.println("output.html created.");
 		}
 		else {
-			system.out.println("File could not be created.");
+			System.out.println("File could not be created.");
 		}
 	}
 	catch (IOException e) {
@@ -125,10 +125,6 @@ class Interpreter extends AbstractParseTreeVisitor<AST>
 
 	AST visitFunction_call(ccParser.Function_callContext ctx) {
 		return new FunctionCall((Signal) visit(ctx.i.getText()), (Exps) visit(ctx.x));
-	}
-
-	AST visitExpression(ccParser.ExpressionContext ctx) {
-		return new Expression((Exp) visit(ctx.e));
 	}
 
 	AST visitArgs(ccParser.ArgsContext ctx) {
