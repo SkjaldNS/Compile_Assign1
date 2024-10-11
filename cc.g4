@@ -20,7 +20,7 @@ exp : x=IDENT                            #Signal
     ;
 
 args: IDENT (',' IDENT)*;
-exps: exp (',' exp)*;
+exps: e1=exp (c+=',' e2+=exp)*;
 
 BOOLEAN: '0'|'1';
 IDENT : [a-zA-Z][a-zA-Z0-9_]*[']?;
