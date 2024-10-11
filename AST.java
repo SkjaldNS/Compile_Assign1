@@ -46,6 +46,34 @@ class Hardware extends Program {
     }
 }
 
+class Input extends Program {
+
+}
+
+class Output extends Program {
+
+}
+
+class Latch extends Program {
+
+}
+
+class Def extends Program {
+
+}
+
+class Update extends Program {
+
+}
+
+class SimInput extends Program {
+
+}
+
+class Signal extends Exp {
+
+}
+
 class Not extends Exp {
     Exp e;
 
@@ -57,4 +85,20 @@ class Not extends Exp {
     public String eval() {
         return "(\\neg" + e.eval() + ")";
     }
+}
+
+class Conjunction extends Exp {
+
+}
+
+class Disjunction extends Exp {
+
+}
+
+class FunctionCall extends Exp {
+
+}
+
+class Expression extends Exp {
+
 }
