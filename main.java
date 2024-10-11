@@ -64,20 +64,19 @@ class Interpreter extends AbstractParseTreeVisitor<AST>
 	}
 
 	AST visitDisjunction(ccParser.DisjunctionContext ctx) {
-
+		return new Disjunction((Exp) visit(ctx.e1), (Exp) visit(ctx.e2));
 	}
 
 	AST visitExpression(ccParser.ExpressionContext ctx) {
-		// Implementation needed
-		return null;
+		return new Expression((Exp) visit(ctx.e));
 	}
 
 	AST visitConjunction(ccParser.ConjunctionContext ctx) {
-
+		return new Conjunction((Exp) visit(ctx.e1), (Exp) visit(ctx.e2));
 	}
 
 	AST visitFunction_call(ccParser.Function_callContext ctx) {
-	
+		return new FunctionCall(new Signal (visit(ctx.i.getText())), new Expression((Exp) visit(ctx.e)));
 	}
 
 	AST visitExps(ccParser.ExpsContext ctx) {
