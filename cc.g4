@@ -2,21 +2,21 @@ grammar cc;
 
 start   : cs+=line* EOF ;
 
-line :  'hardware:' x=IDENT                                        #Hardware
-	|'inputs:' l=LIST                                            #Input
-	|'outputs:' l=LIST                                           #Output
-	|'latches:' l=LIST                                           #Latch   
-	|'def:' (i=IDENT c1='(' l=LIST c2=')' eq='=' e=exp)*       #Def
-	|'updates:' (i=IDENT eq='=' e=exp)+                        #Update
-	|'siminputs:' (i=IDENT eq='=' b=BOOLEAN)+                  #SimInput
+line :  'hardware:' x=IDENT                                     #Hardware
+	|'inputs:' l=LIST                                       #Input
+	|'outputs:' l=LIST                                      #Output
+	|'latches:' l=LIST                                      #Latch   
+	|'def:' (i=IDENT '(' l=LIST ')' '=' e=exp)*             #Def
+	|'updates:' (i=IDENT '=' e=exp)+                        #Update
+	|'siminputs:' (i=IDENT '=' b=BOOLEAN)+                  #SimInput
 	;
 
 exp : x=IDENT                            #Signal
-    | op='/' e=exp                       #Not
-    | e1=exp op='*'? e2=exp              #Conjunction
-    | e1=exp op='+' e2=exp               #Disjunction
-    | i=IDENT p1='(' ex=EXPS p2=')'      #Function_call
-    | p1='(' e=exp p2=')'                #Expression
+    | '/' e=exp                          #Not
+    | e1=exp '*'? e2=exp                 #Conjunction
+    | e1=exp '+' e2=exp                  #Disjunction
+    | i=IDENT '(' ex=EXPS ')'            #Function_call
+    | '(' e=exp ')'                      #Expression
     ;
 
 LIST: IDENT (',' IDENT)*;
