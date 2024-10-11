@@ -90,15 +90,15 @@ class Interpreter extends AbstractParseTreeVisitor<String>
 	}
 
 	String visitInputs(ccParser.InputsContext ctx) {
-
+		return "<H2>"+ctx.getText()+"</H2>"
 	}
 
 	String visitOutputs(ccParser.OutputsContext ctx) {
-
+		return "<H2>"+ctx.getText()+"</H2>"
 	}
 
 	String visitLatches(ccParser.LatchesContext ctx) {
-
+		return "<H2>"+ctx.getText()+"</H2>"
 	}
 
 	String visitDef(ccParser.DefContext ctx) {
