@@ -74,7 +74,7 @@ class Interpreter extends AbstractParseTreeVisitor<String>
 	}
 
 	String visitFunction_call(ccParser.Function_callContext ctx) {
-
+		return ctx.IDENT().getText()+"("+ctx.exps().visitExps()+")";
 	}
 
 	String visitExps(ccParser.ExpsContext ctx) {
