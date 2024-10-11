@@ -275,7 +275,7 @@ class Exps extends AST  {
 		for(Exp e: list) {
 			ls.add(e.eval());
 		}
-		return String.join(", ", ls)
+		return String.join(", ", ls);
 	}
 }
 
