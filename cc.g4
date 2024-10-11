@@ -1,7 +1,7 @@
 grammar cc;
 
 start   : 'hardware:' h = hardwaredecl
-          'inputs:' i = inputs
+          'inputs:' ip = inputs
           'outputs:' o = outputs
           'latches:' l = latches
           ('def:' d = def)*
