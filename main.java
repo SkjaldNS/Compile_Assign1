@@ -100,7 +100,7 @@ class Interpreter extends AbstractParseTreeVisitor<AST>
 	}
 
 	public AST visitSimInput(ccParser.SimInputContext ctx) {
-		return new SimInput(ctx.i.getText(), (Boolean) visit(ctx.b));
+		return new SimInput(ctx.i.getText(), ctx.b);
 	}
 
 	public AST visitSignal(ccParser.SignalContext ctx) {
@@ -124,20 +124,16 @@ class Interpreter extends AbstractParseTreeVisitor<AST>
 	}
 
 	public AST visitFunction_call(ccParser.Function_callContext ctx) {
-		return new FunctionCall(ctx.i.getText(), (Exps) visit(ctx.x));
+		return new Function_call(ctx.i.getText(), (Exps) visit(ctx.ex));
 	}
 
 	public AST visitArgs(ccParser.ArgsContext ctx) {
-		return new Args(ctx.getText());
+		return new Args(ctx.eval());
 	}
 
 
 	public AST visitExps(ccParser.ExpsContext ctx) {
-		List<Exp> l = new ArrayList<Exp>();
-		for(ccParser.ExpContext i : ctx) {
-			l.add((Exp) visit(i));
-		}
-		return new Exps(l);
+		return new Exps(ctx.eval());
 	}
 
 }

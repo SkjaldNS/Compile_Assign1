@@ -224,12 +224,12 @@ class Disjunction extends Exp {
 
 }
 
-class FunctionCall extends Exp {
+class Function_call extends Exp {
 
     String s;
     Exps e;
 
-    FunctionCall(String s, Exps e) {
+    Function_call(String s, Exps e) {
         this.s = s;
         this.e = e;
     }
