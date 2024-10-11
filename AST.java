@@ -250,7 +250,7 @@ class Expression extends Exp {
 
 }
 
-class List extends AST {
+class Args extends AST {
 	List<String> list;
 
 	List(List<String> l) {
