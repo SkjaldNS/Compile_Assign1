@@ -6,18 +6,16 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class AST{};
-
-abstract class Program extends AST{
+public abstract class AST{
     abstract public String eval();
-}
+};
 
 abstract class Exp extends AST{
     abstract public String eval();
 }
 
 
-class Start extends Program {
+class Start extends AST {
 	
     List<Program> ps;
 
@@ -37,7 +35,7 @@ class Start extends Program {
 
 
 
-class Hardware extends Program {
+class Hardware extends AST {
 
     Signal s;
 
@@ -51,7 +49,7 @@ class Hardware extends Program {
     }
 }
 
-class Input extends Program {
+class Input extends AST {
 
     Signal s;
 
@@ -65,7 +63,7 @@ class Input extends Program {
 
 }
 
-class Output extends Program {
+class Output extends AST {
 
     Signal s;
 
@@ -80,7 +78,7 @@ class Output extends Program {
 
 }
 
-class Latch extends Program {
+class Latch extends AST {
 
     Signal s;
 
@@ -95,7 +93,7 @@ class Latch extends Program {
 
 }
 
-class Def extends Program {
+class Def extends AST {
 
     Exp e;
     Signal s;
@@ -115,7 +113,7 @@ class Def extends Program {
 
 }
 
-class Update extends Program {
+class Update extends AST {
 
     Signal s;
     Exp e;
@@ -133,7 +131,7 @@ class Update extends Program {
 
 }
 
-class SimInput extends Program {
+class SimInput extends AST {
 
     Signal s;
     Boolean b;
@@ -150,7 +148,7 @@ class SimInput extends Program {
 
 }
 
-class Arg extends Program {
+class Arg extends AST {
 
     List<Signal> ls;
 
