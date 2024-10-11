@@ -58,11 +58,11 @@ class Interpreter extends AbstractParseTreeVisitor<String>
 	}
 
 	String visitNot(ccParser.NotContext ctx) {
-
+		return "(\neg"+ctx.e.vistExp()+")"
 	}
 
 	String visitDisjunction(ccParser.DisjunctionContext ctx) {
-
+		return ctx.e1.visitExp()+"\vee"+ctx.e2.visitExp()
 	}
 
 	String visitExpression(ccParser.ExpressionContext ctx) {
@@ -70,7 +70,7 @@ class Interpreter extends AbstractParseTreeVisitor<String>
 	}
 
 	String visitConjunction(ccParser.ConjunctionContext ctx) {
-
+		return ""
 	}
 
 	String visitFunction_call(ccParser.Function_callContext ctx) {
@@ -91,14 +91,17 @@ class Interpreter extends AbstractParseTreeVisitor<String>
 
 	String visitInputs(ccParser.InputsContext ctx) {
 		List<String> inputs = new ArrayList<String>();
-        	for(ccParser.InputsContext i : ctx.IDENT() {
+        	for(ccParser.InputsContext i : ctx.IDENT()) {
             		inputs.add(i.getText());
         	}
-        	return "<H2>"+ String.join("," signals)+"</H2>"
+        	return "<H2>"+ String.join("," inputs)+"</H2>"
 
 	String visitOutputs(ccParser.OutputsContext ctx) {
-		return "<H2>"+ctx.getText()+"</H2>"
-	}
+			List<String> outputs = new ArrayList<String>();
+			for(ccParser.OutputsContext i : ctx.IDENT()) {
+				outputs.add(i.getText());
+			}
+			return "<H2>"+ String.join("," outputs)+"</H2>"
 
 	String visitLatches(ccParser.LatchesContext ctx) {
 		return "<H2>"+ctx.getText()+"</H2>"
