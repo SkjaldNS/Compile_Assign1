@@ -70,7 +70,7 @@ class Interpreter extends AbstractParseTreeVisitor<String>
 	}
 
 	String visitConjunction(ccParser.ConjunctionContext ctx) {
-		return ""
+		return ctx.e1.visitExp()+"\wedge"+ctx.e2.visitExp()
 	}
 
 	String visitFunction_call(ccParser.Function_callContext ctx) {
