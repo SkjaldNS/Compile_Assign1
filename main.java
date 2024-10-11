@@ -134,7 +134,7 @@ class Interpreter extends AbstractParseTreeVisitor<AST>
 
 
 	public AST visitExps(ccParser.ExpsContext ctx) {
-		List<Exp> ex = new ArrayList<Exp>(ctx.e1);
+		List<Exp> ex = new ArrayList<Exp>((Exp) visit(ctx.e1));
 		for(ccParser.ExpContext i : ctx.e2) {
 			ex.add((Exp) visit(i));
 		}
