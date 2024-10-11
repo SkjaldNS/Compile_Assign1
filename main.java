@@ -44,11 +44,10 @@ public class main {
 // This is parameterized over a return type "<T>" which is in our case
 // simply a Double.
 
-class Interpreter extends AbstractParseTreeVisitor<String>
+class Interpreter extends AbstractParseTreeVisitor<AST>
 		implements ccVisitor<AST> {
 
 	AST visitStart(ccParser.StartContext ctx) {
-		// Implementation needed
 		List<Program> ps = new ArrayList<Program>();
 		for(ccParser.CmdContext i : ctx.cs) {
 			ps.add((String) visit(ps));
@@ -57,11 +56,11 @@ class Interpreter extends AbstractParseTreeVisitor<String>
 	}
 
 	AST visitSignal(ccParser.SignalContext ctx) {
-
+		return new Signal(ctx.x.getText());
 	}
 
 	AST visitNot(ccParser.NotContext ctx) {
-
+		return new Not((Exp) visit(ctx.e))
 	}
 
 	AST visitDisjunction(ccParser.DisjunctionContext ctx) {
