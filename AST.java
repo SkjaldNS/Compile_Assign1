@@ -27,11 +27,10 @@ class Start extends Program {
 
     @Override
     public String eval() {
-        String result = "";
-        for (Program p : ps) {
-            result += p.eval();
-        }
-        return result;
+	String return;
+        for (Prograp p: ps){
+		return = return + p.eval;
+	}
     }
 }
 
