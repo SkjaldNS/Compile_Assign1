@@ -132,7 +132,7 @@ class Interpreter extends AbstractParseTreeVisitor<AST>
 		List<String> ls = new ArrayList<String>();
 		ls.add(ctx.x1.getText());
 		for(String i : ctx.x2) {
-			ls.add(i.getText());
+			ls.add(i);
 		}
 		return new Args(ls);
 	}
