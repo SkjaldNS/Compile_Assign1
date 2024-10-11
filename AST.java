@@ -254,7 +254,7 @@ class List extends AST {
 	List<String> list;
 
 	List(List<String> l) {
-		this.l = l;
+		this.list = l;
 	}
 
 	public String eval() {
@@ -267,7 +267,7 @@ class Exps extends AST  {
 	List<Exp> list;
 
 	List(List<Exp> l) {
-		this.l = l;
+		this.list = l;
 	}
 
 	public String eval() {
