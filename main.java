@@ -66,15 +66,15 @@ class Interpreter extends AbstractParseTreeVisitor<String>
 	}
 
 	String visitSignal(ccParser.SignalContext ctx) {
-		return ctx.getText();
+
 	}
 
 	String visitNot(ccParser.NotContext ctx) {
-		return "(\\neg" + ctx.e.visitExp() + ")";
+
 	}
 
 	String visitDisjunction(ccParser.DisjunctionContext ctx) {
-		return ctx.e1.visitExp() + "\\vee" + ctx.e2.visitExp();
+
 	}
 
 	String visitExpression(ccParser.ExpressionContext ctx) {
@@ -83,55 +83,35 @@ class Interpreter extends AbstractParseTreeVisitor<String>
 	}
 
 	String visitConjunction(ccParser.ConjunctionContext ctx) {
-		return ctx.e1.visitExp() + "\\wedge" + ctx.e2.visitExp();
+
 	}
 
 	String visitFunction_call(ccParser.Function_callContext ctx) {
-		return ctx.IDENT().getText() + "(" + ctx.exps().visitExps() + ")";
+	
 	}
 
 	String visitExps(ccParser.ExpsContext ctx) {
-		List<String> exps = new ArrayList<>();
-		for (ccParser.ExpContext i : ctx.exp()) {
-			exps.add(i.getText());
-		}
-		return "<H2>" + String.join(",", exps) + "</H2>";
+
 	}
 
 	String visitArgs(ccParser.ArgsContext ctx) {
-		List<String> args = new ArrayList<>();
-		for (ccParser.ArgContext i : ctx.IDENT()) {
-			args.add(i.getText());
-		}
-		return "<H2>" + String.join(",", args) + "</H2>";
+
 	}
 
 	String visitHardwaredecl(ccParser.HardwaredeclContext ctx) {
-		return "<H1>" + ctx.getText() + "</H1>";
+
 	}
 
 	String visitInputs(ccParser.InputsContext ctx) {
-		List<String> inputs = new ArrayList<>();
-		for (ccParser.InputContext i : ctx.IDENT()) {
-			inputs.add(i.getText());
-		}
-		return "<H2>" + String.join(",", inputs) + "</H2>";
+
 	}
 
 	String visitOutputs(ccParser.OutputsContext ctx) {
-		List<String> outputs = new ArrayList<>();
-		for (ccParser.OutputContext i : ctx.IDENT()) {
-			outputs.add(i.getText());
-		}
-		return "<H2>" + String.join(",", outputs) + "</H2>";
+	
 	}
 
 	String visitLatches(ccParser.LatchesContext ctx) {
-		List<String> latches = new ArrayList<>();
-		for (ccParser.LatchContext i : ctx.IDENT()) {
-			latches.add(i.getText());
-		}
-		return "<H2>" + String.join(",", latches) + "</H2>";
+
 	}
 
 	String visitDef(ccParser.DefContext ctx) {
@@ -140,14 +120,10 @@ class Interpreter extends AbstractParseTreeVisitor<String>
 	}
 
 	String visitUpdates(ccParser.UpdatesContext ctx) {
-		return ctx.e.visitSignal().getText() + "&larr" + ctx.e.visitExp().getText();
+
 	}
 
 	String visitSiminputs(ccParser.SiminputsContext ctx) {
-		List<String> siminputs = new ArrayList<>();
-		for (ccParser.SiminputContext i : ctx.IDENT()) {
-			siminputs.add(i.getText());
-		}
-		return "<H2>" + String.join(",", siminputs) + "</H2>";
+
 	}
 }
