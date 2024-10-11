@@ -58,11 +58,11 @@ class Interpreter extends AbstractParseTreeVisitor<String>
 	}
 
 	String visitNot(ccParser.NotContext ctx) {
-		return "(\neg"+ctx.e.vistExp()+")"
+		return "(\\neg"+ctx.e.vistExp()+")"
 	}
 
 	String visitDisjunction(ccParser.DisjunctionContext ctx) {
-		return ctx.e1.visitExp()+"\vee"+ctx.e2.visitExp()
+		return ctx.e1.visitExp()+"\\vee"+ctx.e2.visitExp()
 	}
 
 	String visitExpression(ccParser.ExpressionContext ctx) {
@@ -70,7 +70,7 @@ class Interpreter extends AbstractParseTreeVisitor<String>
 	}
 
 	String visitConjunction(ccParser.ConjunctionContext ctx) {
-		return ctx.e1.visitExp()+"\wedge"+ctx.e2.visitExp()
+		return ctx.e1.visitExp()+"\\wedge"+ctx.e2.visitExp()
 	}
 
 	String visitFunction_call(ccParser.Function_callContext ctx) {
