@@ -125,10 +125,19 @@ class Interpreter extends AbstractParseTreeVisitor<String>
 	}
 
 	String visitUpdates(ccParser.UpdatesContext ctx) {
-
+		List<String> updates = new ArrayList<String>();
+		for(ccParser.UpdatesContext i : ctx.update()) {
+			updates.add(i.getText());
+		}
+		return "<H2>"+ String.join("," updates)+"</H2>"
 	}
 
 	String visitSiminputs(ccParser.SiminputsContext ctx) {
+		List<String> siminputs = new ArrayList<String>();
+		for(ccParser.SiminputsContext i : ctx.siminput()) {
+			siminputs.add(i.getText());
+		}
+		return "<H2>"+ String.join("," siminputs)+"</H2>"
 
 	}
 
