@@ -18,6 +18,7 @@ abstract class Exp extends AST{
 
 
 class Start extends Program {
+	
     List<Program> ps;
 
     Start(List<Program> ps) {
@@ -66,7 +67,6 @@ class Input extends Program {
 
 class Output extends Program {
 
-
     Signal s;
 
     Output(Signal s) {
@@ -102,9 +102,7 @@ class Latch extends Program {
 class Def extends Program {
 
     Exp e;
-
     Signal s;
-
     Arg a;
 
     Def(Exp e, Signal s, Arg a) {
@@ -142,7 +140,6 @@ class Update extends Program {
 class SimInput extends Program {
 
     Signal s;
-
     Boolean b;
 
     SimInput(Signal s, Boolean b) {
@@ -243,7 +240,6 @@ class Disjunction extends Exp {
 class FunctionCall extends Exp {
 
     Signal s;
-
     Expression e;
 
     FunctionCall(Signal s, Expression e) {
