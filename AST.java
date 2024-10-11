@@ -56,9 +56,9 @@ class Hardware extends Line {
 
 class Input extends Line {
 
-    Signal s;
+    Args s;
 
-    Input(Signal s) {
+    Input(Args s) {
         this.s = s;
     }
     @Override
@@ -70,9 +70,9 @@ class Input extends Line {
 
 class Output extends Line {
 
-    Signal s;
+    Args s;
 
-    Output(Signal s) {
+    Output(Args s) {
         this.s = s;
     }
 
@@ -85,9 +85,9 @@ class Output extends Line {
 
 class Latch extends Line {
 
-    Signal s;
+    Args s;
 
-    Latch(Signal s) {
+    Latch(Args s) {
         this.s = s;
     }
 
