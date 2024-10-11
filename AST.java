@@ -141,9 +141,9 @@ class Update extends Line {
 class SimInput extends Line {
 
     String s;
-    Boolean b;
+    String b;
 
-    SimInput(String s, Boolean b) {
+    SimInput(String s, String b) {
         this.s = s;
         this.b = b;
     }
