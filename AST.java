@@ -48,29 +48,68 @@ class Hardware extends Program {
 
 class Input extends Program {
 
+    @Override
+    public String eval() {
+        return "<H2>" + String.join(",", inputs) + "</H2>";
+    }
+
 }
 
 class Output extends Program {
+
+    @Override
+    public String eval() {
+        return "<H2>" + String.join(",", outputs) + "</H2>";
+    }
 
 }
 
 class Latch extends Program {
 
+    @Override
+    public String eval() {
+
+    }
+
 }
 
 class Def extends Program {
+
+    @Override
+    public String eval() {
+
+    }
+
 
 }
 
 class Update extends Program {
 
+    @Override
+    public String eval() {
+
+    }
+
+
 }
 
 class SimInput extends Program {
 
+
+    @Override
+    public String eval() {
+
+    }
+
 }
 
 class Signal extends Exp {
+
+    @Override
+    public String eval() {
+
+    }
+
 
 }
 
@@ -89,16 +128,42 @@ class Not extends Exp {
 
 class Conjunction extends Exp {
 
+    @Override
+    public String eval() {
+
+    }
+
+
 }
 
 class Disjunction extends Exp {
+
+
+    @Override
+    public String eval() {
+
+    }
 
 }
 
 class FunctionCall extends Exp {
 
+
+    @Override
+    public String eval() {
+
+    }
+
+
 }
 
 class Expression extends Exp {
+
+
+    @Override
+    public String eval() {
+
+    }
+
 
 }
