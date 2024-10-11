@@ -268,26 +268,27 @@ class Args extends AST {
 	}
 
 	public String eval() {
-		List<String> ls = new ArrayList<String>();
-        for(String s: list) {
+        List<String> ls = new ArrayList<String>();
+        for (String s : list) {
             ls.add(s);
         }
         return String.join(" ", ls);
+    }
 }
 
-class Exps extends AST  {
-	List<Exp> list;
+class Exps extends AST {
+    List<Exp> list;
 
-	Exps(List<Exp> l) {
-		this.list = l;
-	}
+    Exps(List<Exp> l) {
+        this.list = l;
+    }
 
-	public String eval() {
-		List<String> ls = new ArrayList<String>();
-		for(Exp e: list) {
-			ls.add(e.eval());
-		}
-		return "(" + String.join(", ", ls) + ")";
-	}
+    public String eval() {
+        List<String> ls = new ArrayList<String>();
+        for (Exp e : list) {
+            ls.add(e.eval());
+        }
+        return "(" + String.join(", ", ls) + ")";
+    }
 }
 
