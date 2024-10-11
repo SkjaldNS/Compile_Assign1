@@ -22,7 +22,7 @@ class Sequence extends Line {
 
     @Override
     public String eval() {
-	String result;
+	String result = "";
         for (Line p: ps){
 		result = result + p.eval();
 	}
@@ -34,7 +34,7 @@ class Sequence extends Line {
 		+ "src=\"https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js\">"
 		+ "</script></head><body>"
 		+ result 
-		+ "</body></html>"
+		+ "</body></html>";
     }
 }
 
@@ -112,7 +112,8 @@ class Def extends Line {
 
     @Override
     public String eval() {
-	return "<H2> Def </H2>\n\(\mathit{"+ s.eval() + "} ("+ a.eval() + ")=(" e.eval()+")\)<br>";
+	return "<H2> Def </H2>\n\\(\\mathit{"+ s.eval() + "} ("+ a.eval() + ")=("
+            + e.eval()+")\\)<br>";
     }
 
 
@@ -130,7 +131,8 @@ class Update extends Line {
 
     @Override
     public String eval() {
-        return "<H2> Updates </H2>\n"+ s.eval()+"&larr;\(\mathit{"+e.eval()+"\n";
+        return "<H2> Updates </H2>\n"+ s.eval()+"&larr;\\(\\mathit{"
+                +e.eval()+"\n";
     }
 
 
@@ -167,7 +169,7 @@ class Signal extends Exp {
 
     @Override
     public String eval() {
-        return "\mathrm{" + name + "}";
+        return "\\mathrm{" + name + "}";
     }
 
 
@@ -182,7 +184,7 @@ class Not extends Exp {
 
     @Override
     public String eval() {
-        return "(\neg(" + e.eval() + ")";
+        return "(\\neg(" + e.eval() + ")";
     }
 }
 
@@ -198,7 +200,7 @@ class Conjunction extends Exp {
 
     @Override
     public String eval() {
-        return  e1.eval()+ "\wedge" + e2.eval();
+        return  e1.eval()+ "\\wedge" + e2.eval();
     }
 
 
@@ -217,7 +219,7 @@ class Disjunction extends Exp {
 
     @Override
     public String eval() {
-        return e1.eval()+ "\vee" + e2.eval();
+        return e1.eval()+ "\\vee" + e2.eval();
     }
 
 }
@@ -243,7 +245,7 @@ class FunctionCall extends Exp {
 
 class Expression extends Exp {
 
-    Exp e1;
+    Exp e;
 
     Expression(Exp e) {
         this.e = e;
@@ -252,7 +254,7 @@ class Expression extends Exp {
 
     @Override
     public String eval() {
-        return "("+e.eval()+")";
+        return "(" + e.eval() + ")";
     }
 
 
@@ -279,7 +281,7 @@ class Exps extends AST  {
 	}
 
 	public String eval() {
-		List<String> ls;
+		List<String> ls = new ArrayList<String>();
 		for(Exp e: list) {
 			ls.add(e.eval());
 		}

@@ -35,7 +35,7 @@ public class main {
 
 	// Construct an interpreter and run it on the parse tree
 	Interpreter interpreter = new Interpreter();
-	Program result=interpreter.visit(parseTree);
+	Line result=interpreter.visit(parseTree);
     }
 }
 
