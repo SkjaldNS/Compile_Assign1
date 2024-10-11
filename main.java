@@ -67,7 +67,7 @@ public class main {
 class Interpreter extends AbstractParseTreeVisitor<AST>
 		implements ccVisitor<AST> {
 
-	AST visitStart(ccParser.StartContext ctx) {
+	public AST visitStart(ccParser.StartContext ctx) {
 		List<Line> ps = new ArrayList<Line>();
 		for(ccParser.LineContext i : ctx.cs) {
 			ps.add((Line) visit(i));
@@ -75,47 +75,47 @@ class Interpreter extends AbstractParseTreeVisitor<AST>
 		return new Sequence(ps);
 	}
 
-	AST visitHardware(ccParser.HardwareContext ctx) {
+	public AST visitHardware(ccParser.HardwareContext ctx) {
 		return new Hardware((Signal) visit(ctx.x));
 	}
 
-	AST visitInput(ccParser.InputContext ctx) {
+	public AST visitInput(ccParser.InputContext ctx) {
 		return new Input((Args) visit(ctx.l));
 	}
 
-	AST visitOutput(ccParser.OutputContext ctx) {
+	public AST visitOutput(ccParser.OutputContext ctx) {
 		return new Output((Args) visit(ctx.l));
 	}
 
-	AST visitLatch(ccParser.LatchContext ctx) {
+	public AST visitLatch(ccParser.LatchContext ctx) {
 		return new Latch((Args) visit(ctx.l));
 	}
 
-	AST visitDef(ccParser.DefContext ctx) {
+	public AST visitDef(ccParser.DefContext ctx) {
 		return new Def((Signal) visit(ctx.i), (Args) visit(ctx.l), (Exp) visit(ctx.e));
 	}
 
-	AST visitUpdate(ccParser.UpdateContext ctx) {
+	public AST visitUpdate(ccParser.UpdateContext ctx) {
 		return new Update((Signal) visit(ctx.i), (Exp) visit(ctx.e));
 	}
 
-	AST visitSimInputs(ccParser.SimInputsContext ctx) {
+	public AST visitSimInputs(ccParser.SimInputsContext ctx) {
 		return new Siminput((Signal) visit(ctx.i), (Boolean) visit(ctx.b));
 	}
 
-	AST visitSignal(ccParser.SignalContext ctx) {
+	public AST visitSignal(ccParser.SignalContext ctx) {
 		return new Signal(ctx.x.getText());
 	}
 
-	AST visitNot(ccParser.NotContext ctx) {
+	public AST visitNot(ccParser.NotContext ctx) {
 		return new Not((Exp) visit(ctx.e));
 	}
 
-	AST visitConjunction(ccParser.ConjunctionContext ctx) {
+	public AST visitConjunction(ccParser.ConjunctionContext ctx) {
 		return new Conjunction((Exp) visit(ctx.e1), (Exp) visit(ctx.e2));
 	}
 
-	AST visitDisjunction(ccParser.DisjunctionContext ctx) {
+	public AST visitDisjunction(ccParser.DisjunctionContext ctx) {
 		return new Disjunction((Exp) visit(ctx.e1), (Exp) visit(ctx.e2));
 	}
 
@@ -123,11 +123,11 @@ class Interpreter extends AbstractParseTreeVisitor<AST>
 		return new Expression((Exp) visit(ctx.e));
 	}
 
-	AST visitFunction_call(ccParser.Function_callContext ctx) {
+	public AST visitFunction_call(ccParser.Function_callContext ctx) {
 		return new FunctionCall((Signal) visit(ctx.i.getText()), (Exps) visit(ctx.x));
 	}
 
-	AST visitArgs(ccParser.ArgsContext ctx) {
+	public AST visitArgs(ccParser.ArgsContext ctx) {
 		List<String> l = new ArrayList<String>();
 		for(ccParser.ArgContext i : ctx) {
 			l.add(i.getText());
