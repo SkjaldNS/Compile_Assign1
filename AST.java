@@ -16,7 +16,7 @@ abstract class Line extends AST{
 class Sequence extends Line {
 	
     List<Line> ps;
-    Start(List<Line> ps) {
+    Sequence(List<Line> ps) {
         this.ps = ps;
     }
 
