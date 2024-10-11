@@ -49,6 +49,69 @@ class Interpreter extends AbstractParseTreeVisitor<String>
                   implements ccVisitor<String> {
     // todo - Java will complain that "Interpreter" does not in fact
     // implement "implVisitor" at the moment.
+	String visitStart(ccParser.StartContext ctx) {
+
+	}
+
+	String visitSignal(ccParser.SignalContext ctx) {
+
+	}
+
+	String visitNot(ccParser.NotContext ctx) {
+
+	}
+
+	String visitDisjunction(ccParser.DisjunctionContext ctx) {
+
+	}
+
+	String visitExpression(ccParser.ExpressionContext ctx) {
+
+	}
+
+	String visitConjunction(ccParser.ConjunctionContext ctx) {
+
+	}
+
+	String visitFunction_call(ccParser.Function_callContext ctx) {
+
+	}
+
+	String visitExps(ccParser.ExpsContext ctx) {
+
+	}
+	
+	String visitArgs(ccParser.ArgsContext ctx) {
+
+	}
+
+	String visitHardwaredecl(ccParser.HardwaredeclContext ctx) {
+
+	}
+
+	String visitInputs(ccParser.InputsContext ctx) {
+
+	}
+
+	String visitOutputs(ccParser.OutputsContext ctx) {
+
+	}
+
+	String visitLatches(ccParser.LatchesContext ctx) {
+
+	}
+
+	String visitDef(ccParser.DefContext ctx) {
+
+	}
+
+	String visitUpdates(ccParser.UpdatesContext ctx) {
+
+	}
+
+	String visitSiminputs(ccParser.SiminputsContext ctx) {
+
+	}
 
 }
 
