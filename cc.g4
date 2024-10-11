@@ -18,15 +18,15 @@ exp : IDENT                              #Signal
     ;
 
 
-exps: exp (',' exp)*;
-args: IDENT (',' IDENT)*;
-hardwaredecl : IDENT;
-inputs: (IDENT)+;
-outputs: (IDENT)+;
-latches: (IDENT)+;
-def: (IDENT '(' args ')' '=' exp)*;
-updates : (IDENT '=' exp)+;
-siminputs : (IDENT '=' BOOLEANS)+;
+exps: e1=exp (c=',' e2=exp)*;
+args: i1=IDENT (c=',' i2=IDENT)*;
+hardwaredecl : i=IDENT;
+inputs: i=(IDENT)+;
+outputs: i=(IDENT)+;
+latches: i=(IDENT)+;
+def: (i=IDENT c1='(' a=args c2=')' eq='=' e=exp)*;
+updates : (i=IDENT eq='=' e=exp)+;
+siminputs : (i=IDENT eq='=' b=BOOLEANS)+;
 
 BOOLEANS: [01]+;
 
